@@ -4,7 +4,9 @@ import datetime
 import re
 
 class Data:
+
     def ObjectData(self, data_str: str) -> Union[int, str, datetime.datetime]:
+
         Year_re = re.compile(r'(\d{4})')
         M_re = re.compile(r'-(\d{2})')
         Hour_re = re.compile(r'(\d+):')
@@ -18,4 +20,5 @@ class Data:
         Minute: int = int(Minute_re.findall(data_str)[0])
         datetime_object: Union[int, str, datetime] = datetime.datetime(year=Year_int, month=M, day=Day, hour=Hour,
                                             minute=Minute, tzinfo=ZoneInfo('Europe/Warsaw')) # type: ignore
+
         return datetime_object
